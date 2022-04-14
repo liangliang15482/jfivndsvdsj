@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>钟表</title>
+		<style>
+		*{
+			margin: 0;padding: 0;
+			background-color: #00e100;
+		}
+		li{
+			list-style: none;
+		}
+		#div1{
+			width: 300px;
+			height: 300px;
+			border: 5px #000 solid;
+			margin: 30px auto;
+			border-radius: 50%;
+			position: relative;
+		}
+		#div1 ul{}
+		#div1 ul li{
+			width: 4px;
+			height: 6px;
+			background: black;
+			position:absolute ;
+			left: 148px;
+			top: 0;
+			transform-origin: center 150px;
+		}
+		#hour{
+			width: 10px;
+			height: 50px;
+			background: #000000;
+			position: absolute;
+			left: 145px;
+			top: 100px;
+			transform-origin: bottom;
+		}
+		#minu{
+			width: 6px;
+			height: 90px;
+			background: #000000;
+			position: absolute;
+			left: 147px;
+			top: 60px;
+			transform-origin: bottom;
+		}
+		#seco{
+			width: 2px;
+			height: 120px;
+			background: #000000;
+			position: absolute;
+			left: 149px;
+			top: 30px;
+			transform-origin: bottom;
+		}
+		#ball{
+			width: 18px;
+			height: 18px;
+			border-radius: 50%;
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			margin: -10px;
+			background: black;
+		}
+		#div3{
+			position: absolute;
+			left: 140px;
+			top: 25px;
+		}
+		#div4{
+			position: absolute;
+			left: 145px;
+			top: 260px;
+		}
+		#div5{
+			position: absolute;
+			left: 25px;
+			top: 140px;
+		}
+		#div6{
+			position: absolute;
+			left: 270px;
+			top: 140px;
+		}
+		</style>
+	</head>
+	<body>
+		<div id="div1">
+			<ul id="ull"></ul>
+			<div id="hour"></div>
+			<div id="minu"></div>
+			<div id="seco"></div>
+			<div id="ball"></div>
+			<div id="div3">12</div>
+			<div id="div4">6</div>
+			<div id="div5">9</div>
+			<div id="div6">3</div>
+			
+			<script>
+			var oUl = document.getElementById('ull');
+			var oHour = document.getElementById('hour');
+			var oMinu = document.getElementById('minu');
+			var oSeco = document.getElementById('seco');
+			
+			for (var i = 0; i < 60; i++) {
+				var oLi = document.createElement('li');
+				oLi.style.transform = 'rotate('+ (6*i)+'deg)';
+				if(i%5==0){
+					oLi.style.height = '15px';
+					oLi.style.background = 'blue';
+					
+				}
+				oUl.appendChild(oLi);
+			}
+			run();
+			setInterval(run,1000);
+			function run(){
+				var oDate = new Date();
+				var iH = oDate.getHours();
+				var iM = oDate.getMinutes();
+				var iS = oDate.getSeconds();
+				
+				oHour.style.transform = 'rotate('+ (iH*30 + iM/2) +'deg)';
+				oMinu.style.transform = 'rotate('+ (iM*6) +'deg)';
+				oSeco.style.transform = 'rotate('+ (iS*6) +'deg)';
+			}
+			
+			
+			</script>
+			
+		</div>
+		
+	</body>
+</html>
